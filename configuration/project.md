@@ -25,27 +25,18 @@ The `retype.json` file is actually optional (not required), but is recommended a
 
 Running the command `retype init` will create a default configuration in the `retype.yml` file. The following sample demonstrates a common set of configuration options and everything can be customized to your requirements.
 
-```json Sample retype.json
-{
-  "input": ".",
-  "output": ".retype",
-
-  "branding": {
-    "title": "Project Name",
-    "label": "Docs"
-  },
-
-  "links": [
-    {
-      "text": "Getting Started",
-      "link": "https://retype.com/getting_started/"
-    }
-  ],
-
-  "footer": {
-    "copyright": "© Copyright {{ year }}. All rights reserved."
-  }
-}
+```yml Sample retype.yml
+input: "."
+output: ".retype"
+branding:
+  title: "Project Name"
+  label: "Docs"
+links:
+  -
+    text: "Getting Started"
+    link: "https://retype.com/getting_started/"
+footer:
+  copyright: "© Copyright {{ year }}. All rights reserved."
 ```
 
 ---
@@ -60,10 +51,8 @@ If you deploy the build website to a subfolder of another website, use the `base
 
 For instance, let's say your main site is `https://example.com` and will remain unchanged.  If you would like to deploy the Retype built website into a `/docs` subfolder, with the final URL of `https://example.com/docs`, then setting `"base": "docs"` would be required.
 
-```json Sample: Change output location to /docs folder
-{
-  "base": "docs"
-}
+```yml Sample: Change output location to /docs folder
+base: "docs"
 ```
 
 Another common scenario for setting a `base` is when using GitHub Pages **without** a custom `CNAME`.
@@ -78,10 +67,8 @@ The Retype generated wesite would require `"base": "my-repo"` to be set within y
 
 The `retype.json` file for that scenario would be...
 
-```json retype.json
-{
-  "base": "my-repo"
-}
+```yml retype.yml
+base: "my-repo"
 ```
 
 ...and the GitHub Pages configuration within your repo Settings would be:
@@ -103,12 +90,9 @@ The main text title added to the upper-left corner of the generated website.
 
 The `title` can be used in conjunction with [`logo`](#logo) and [`logoDark`](#logoDark). If a `title` and `logo` are configured, both will be added to the website. If only a `title` is configured, only the text title is used. If only a `logo` and/or `logoDark` are configured, only the logos are used.
 
-```json Set the website title
-{
-  "branding": {
-    "title": "Example.com"
-  }
-}
+```yml Set the website title
+branding:
+  title: "Example.com"
 ```
 
 The above `title` would create the following branding title in the upper-left corner of the generated website.
@@ -122,12 +106,9 @@ The above `title` would create the following branding title in the upper-left co
 
 Optional logo label text. Default is `Docs`.
 
-```json Set a custom label
-{
-  "branding": {
-    "label": "v2.2"
-  }
-}
+```yml Set a custom label
+branding:
+  label: "v2.2"
 ```
 The `label` is rendered as the following label in the upper-left corner of the generated website, to the right of the [`title`](#title) or [`logo`](#logo).
 
@@ -145,12 +126,9 @@ One of the following:
 
 Default is `null`.
 
-```json Set a custom label
-{
-  "branding": {
-    "logo": "static/logo.png"
-  }
-}
+```yml Set a custom label
+branding:
+  logo: "static/logo.png"
 ```
 ===
 
@@ -165,13 +143,10 @@ One of the following:
 
 Default is `null`.
 
-```json Set a custom label
-{
-  "branding": {
-    "logo": "static/logo.png",
-    "logoDark": "static/logo-dark.png"
-  }
-}
+```yml Set a custom label
+branding:
+  logo: "static/logo.png"
+  logoDark: "static/logo-dark.png"
 ```
 ===
 
@@ -184,16 +159,11 @@ Custom color configuration.
 === label.text : `string`
 Set a custom label text color. Default is `#1f7aff`.
 
-```json
-{
-  "branding": {
-    "colors": {
-      "label": {
-        "text": "#ffffff"
-      }
-    }
-  }
-}
+```yml
+branding:
+  colors:
+    label:
+      text: "#ffffff"
 ```
 ===
 
@@ -202,16 +172,11 @@ Set a custom label text color. Default is `#1f7aff`.
 === label.background : `string`
 Set a custom label background color. Default is `#e1edff`.
 
-```json
-{
-  "branding": {
-    "colors": {
-      "label": {
-        "background": "#ff0000"
-      }
-    }
-  }
-}
+```yml
+branding:
+  colors:
+    label:
+      background: "#ff0000"
 ```
 ===
 
@@ -223,10 +188,8 @@ Set a custom label background color. Default is `#e1edff`.
 
 If specified, a `CNAME` file with the corresponding value will be created and added to the root of the [`output`](#output). Default is `null`.
 
-```json Sample: Host docs.example.com website using GitHub pages
-{
-  "cname": "docs.example.com"
-}
+```yml Sample: Host docs.example.com website using GitHub pages
+cname: "docs.example.com"
 ```
 ===
 
@@ -247,12 +210,9 @@ The repository URL where the source files for this project are located.
 === repo : `string`
 Setting a `repo` value will enable the `Edit this page` links on all content pages.
 
-```json
-{
-  "edit": {
-    "repo": "https://github.com/your-organization/your-repo"
-  }
-}
+```yml
+edit:
+  repo: "https://github.com/your-organization/your-repo"
 ```
 ===
 
@@ -261,13 +221,10 @@ Setting a `repo` value will enable the `Edit this page` links on all content pag
 === branch : `string`
 Point to a custom branch within the repo. Default is `main`.
 
-```json
-{
-  "edit": {
-    "repo": "https://github.com/your-organization/your-repo",
-    "branch": "website"
-  }
-}
+```yml
+edit:
+  repo: "https://github.com/your-organization/your-repo"
+  branch: "website"
 ```
 ===
 
@@ -278,13 +235,10 @@ A base folder within from the root of the project where the source content files
 
 The following sample demonstrates a scenario where the content files are located within the `/docs` sub-folder of the repo.
 
-```json
-{
-  "edit": {
-    "repo": "https://github.com/your-organization/your-repo",
-    "base": "docs"
-  }
-}
+```yml
+edit:
+  repo: "https://github.com/your-organization/your-repo"
+  base: "docs"
 ```
 ===
 
@@ -293,13 +247,10 @@ The following sample demonstrates a scenario where the content files are located
 === label : `string`
 A custom label for the link. Default is `"Edit this page"`.
 
-```json
-{
-  "edit": {
-    "repo": "https://github.com/your-organization/your-repo",
-    "label": "Edit on GitHub"
-  }
-}
+```yml
+edit:
+  repo: "https://github.com/your-organization/your-repo"
+  label: "Edit on GitHub"
 ```
 ===
 
@@ -314,14 +265,11 @@ Exclude patterns are similar to allowable patterns within a `.gitignore` file. T
 
 The following sample demonstrates how to exclude an entire `draft/` folder, any folder that ends with `*_temp/`, and one specific `/src/temp.md` file.
 
-```json Exclude patterns
-{
-  "exclude": [
-    "draft/",
-    "*_temp/",
-    "/src/temp.md"
-  ]
-}
+```yml Exclude patterns
+exclude:
+  - "draft/"
+  - "*_temp/"
+  - "/src/temp.md"
 ```
 
 You could exclude everything in your project with by adding `"exclude": [ "*" ]`.
@@ -345,10 +293,8 @@ A custom path to a `.ico` or `.png` file to be used as the `favicon`. Default is
 
 The path is relative to the [`input`](#input).
 
-```json Favicon is stored in the /static folder
-{
-  "favicon": "static/favicon.png"
-}
+```yml Favicon is stored in the /static folder
+favicon: "static/favicon.png"
 ```
 
 By default, Retype will look for a `favicon.ico` or `favicon.png` within the root of the [`input`](#input). The `favicon` config would typically only be used if you want to store the `favicon` file in a subfolder of the [`output`](#output) root.
@@ -363,12 +309,9 @@ By default, Retype will look for a `favicon.ico` or `favicon.png` within the roo
 === copyright : `string`
 Site-wide copyright statement that will be added to the footer of each page. Supports Markdown syntax and `{{ year }}` variable.
 
-```json
-{
-  "footer": {
-    "copyright": "© Copyright {{ year }}. [Example, Inc.](https://example.come/) All rights reserved."
-  }
-}
+```yml
+footer:
+  copyright: "© Copyright {{ year }}. [Example, Inc.](https://example.come/) All rights reserved."
 ```
 ===
 
@@ -377,17 +320,12 @@ Site-wide copyright statement that will be added to the footer of each page. Sup
 === links : `object`
 The `footer.links` have the same configuration options as [`links`](#links).
 
-```json
-{
-  "footer": {
-    "links": [
-      {
-        "text": "License",
-        "link": "license.md"
-      }
-    ]
-  }
-}
+```yml
+footer:
+  links:
+    -
+      text: "License"
+      link: "license.md"
 ```
 ===
 
@@ -402,13 +340,10 @@ Include patterns are similar to allowable patterns within a `.gitignore` file. T
 
 The following sample demonstrates how to include all `.py` files and the entire contents of any `www` folder within the project.
 
-```json Include patterns
-{
-  "include": [
-    "*.py",
-    "**/www/**"
-  ]
-}
+```yml Include patterns
+include:
+  - "*.py"
+  - "**/www/**"
 ```
 
 You could explicitly include everything in your project with `"include": [ "*" ]`, BUT be careful as all files within your [`input`](#input) will be publicly availble once your website is published. We would not recommend doing this, but it's your call. :fearful:
@@ -457,10 +392,8 @@ Custom path to the input directory. Default is `.`.
 
 The path is relative to the `retype.json` location.
 
-```json Change input location to /src folder
-{
-  "input": "./src"
-}
+```yml Change input location to /src folder
+input: "./src"
 ```
 ===
 
@@ -477,14 +410,10 @@ Add Google Analytics to your website.
 === googleAnalytics.id : `string`
 Google Analytics ID value.
 
-```json
-{
-  "integrations": {
-    "googleAnalytics": {
-      "id": "UA-12345678-1"
-    }
-  }
-}
+```yml
+integrations:
+  googleAnalytics:
+    id: "UA-12345678-1"
 ```
 ===
 
@@ -496,15 +425,11 @@ Custom links added to the top-bar navigation of all pages.
 
 The following sample demonstrates a basic `links` scenario which would add one link to the top bar of all pages.
 
-```json
-{
-  "links": [
-    {
-      "text": "Getting Started",
-      "link": "https://retype.com/getting_started/"
-    }
-  ]
-}
+```yml
+links:
+  -
+    text: "Getting Started"
+    link: "https://retype.com/getting_started/"
 ```
 
 ### text
@@ -513,15 +438,11 @@ The following sample demonstrates a basic `links` scenario which would add one l
 
 The link text label.
 
-```json
-{
-  "links": [
-    {
-      "text": "Demos",
-      "link": "https://demo.example.com/"
-    }
-  ]
-}
+```yml
+links:
+  -
+    text: "Demos"
+    link: "https://demo.example.com/"
 ```
 ===
 
@@ -533,15 +454,11 @@ The URL to use for the link. The link can be a `.md` file name, or to any intern
 
 If a `.md` file set, such as `sample.md`, Retype will automatically resolve the path and in the generated website, the `sample.md` value will be replaced with the path to the actual generated HTML file.
 
-```json
-{
-  "links": [
-    {
-      "text": "About us",
-      "link": "/about/"
-    }
-  ]
-}
+```yml
+links:
+  -
+    text: "About us"
+    link: "/about/"
 ```
 ===
 
@@ -551,16 +468,12 @@ If a `.md` file set, such as `sample.md`, Retype will automatically resolve the 
 
 An icon to use with the link. Default is `null`.
 
-```json
-{
-  "links": [
-    {
-      "text": "Issues",
-      "link": "https://github.com/retypeapp/retype/issues/",
-      "icon": "bug"
-    }
-  ]
-}
+```yml
+links:
+  -
+    text: "Issues"
+    link: "https://github.com/retypeapp/retype/issues/"
+    icon: "bug"
 ```
 
 Options include using an [Octicon](https://octicons-primer.vercel.app/octicons/) name, [Emoji](https://mojee.io/emojis/) shortcode, `<svg>` element, or a path to an image file.
@@ -588,17 +501,13 @@ Options include using an [Octicon](https://octicons-primer.vercel.app/octicons/)
 
 The position for the icon relative to the link `text`. Either `left` or `right`. Default is `left`.
 
-```json
-{
-  "links": [
-    {
-      "text": "Demos",
-      "link": "https://demo.example.com/",
-      "icon": "link-external",
-      "iconAlign": "right"
-    }
-  ]
-}
+```yml
+links:
+  -
+    text: "Demos"
+    link: "https://demo.example.com/"
+    icon: "link-external"
+    iconAlign: "right"
 ```
 ===
 
@@ -609,16 +518,12 @@ The position for the icon relative to the link `text`. Either `left` or `right`.
 
 Sets the `target` attribute of the hyperlink and specifies which window or tab to open the link into.
 
-```json
-{
-  "links": [
-    {
-      "text": "Demos",
-      "link": "https://demo.example.com/",
-      "target": "blank"
-    }
-  ]
-}
+```yml
+links:
+  -
+    text: "Demos"
+    link: "https://demo.example.com/"
+    target: "blank"
 ```
 
 If no `target` is configured, the link will open in the current tab.
@@ -657,12 +562,9 @@ If both `meta.base` and `cname` are not configured, Retype will have to use a re
 
 Relative paths are not recommended for both Open Graph and Twitter meta tags, so explicitly setting `meta.base` is recommended.
 
-```json Explicitly set meta tag content path
-{
-  "meta": {
-    "base": "https://example.com"
-  }
-}
+```yml Explicitly set meta tag content path
+meta:
+  base: "https://example.com"
 ```
 
 In the sample above, you could also simplify the value with `"base": "example.com"`. Retype will then assume the `https` protocol and prepend the value with `https://`. It would be better to explicitly configure `base` with the base URL of your final site, but Retype will try its best to determine automatically.
@@ -689,12 +591,9 @@ If setting the `meta.base` property, you might need [`cname`](#cname) too.
 
 Common site-wide suffix appended to the html `<title>` element of all pages. Default is `null`.
 
-```json Append this string to all page meta tag titles
-{
-  "meta": {
-    "title": " | Example.com - Widgets for the internet"
-  }
-}
+```yml Append this string to all page meta tag titles
+meta:
+  title: " | Example.com - Widgets for the internet"
 ```
 
 If we had an `About us` page, the final `<title>` with the `title` value above would be:
@@ -713,10 +612,8 @@ Custom path to the output directory. Default is `.retype`.
 
 The path is relative to the `retype.json` location.
 
-```json Sample: Change output location to /docs folder
-{
-  "output": "./docs"
-}
+```yml Sample: Change output location to /docs folder
+output: "./docs"
 ```
 ===
 
@@ -728,10 +625,8 @@ The path is relative to the `retype.json` location.
 
 A custom port for the internal Retype web server to use when hosting locally. Default is `5000`.
 
-```json
-{
-  "port": 5005
-}
+```yml
+port: 5005
 ```
 
 If the default port is already being used by another service, Retype will auto-increment the port number until it finds an open port to host from.
@@ -750,12 +645,9 @@ Customization of the website search component.
 === minChars : `number`
 Min number of characters required in a search query. Defualt is `3`.
 
-```json
-{
-  "search": {
-    "minChars": 3
-  }
-}
+```yml
+search:
+  minChars: 3
 ```
 ===
 
@@ -764,12 +656,9 @@ Min number of characters required in a search query. Defualt is `3`.
 === maxResults : `number`
 Max number of search results to render. Defualt is `20`.
 
-```json
-{
-  "search": {
-    "maxResults": 20
-  }
-}
+```yml
+search:
+  maxResults: 20
 ```
 ===
 
@@ -778,12 +667,9 @@ Max number of search results to render. Defualt is `20`.
 === placeholder : `string`
 Placeholder text rendered on the search component. Defualt is `"Search"`.
 
-```json
-{
-  "search": {
-    "placeholder": "Search"
-  }
-}
+```yml
+search:
+  placeholder: "Search"
 ```
 ===
 
@@ -792,12 +678,10 @@ Placeholder text rendered on the search component. Defualt is `"Search"`.
 === hotkeys : `string[]`
 Keyboard key to set the cursor focus into the search field. Defualt is `["/"]`.
 
-```json
-{
-  "search": {
-    "hotkeys": ["/"]
-  }
-}
+```yml
+search:
+  hotkeys:
+    - "/"
 ```
 ===
 
@@ -806,12 +690,9 @@ Keyboard key to set the cursor focus into the search field. Defualt is `["/"]`.
 === noResultsFoundMsg : `string`
 Message rendered when no results were found. Defualt is `"Sorry, no results found."`.
 
-```json
-{
-  "search": {
-    "noResultsFoundMsg": "Sorry, no results found."
-  }
-}
+```yml
+search:
+  noResultsFoundMsg: "Sorry, no results found."
 ```
 ===
 

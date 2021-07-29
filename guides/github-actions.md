@@ -97,12 +97,10 @@ https://<organization>.github.io/<repo>/
 
 If a Retype generated website is hosted from a subfolder, Retype requires a [`base`](../configuration/project.md#base) config to be added to the `retype.json` file. The following sample demonstrates how the `base` would be configured for our scenario. For your project, replace `"base": "retype"` with `"base": "<repo>"` where `<repo>` is your repo name.
 
-```json Sample: Set base if using github.io
-{
-  "input": "./",
-  "output": ".retype",
-  "base": "retype"
-}
+```yml Sample: Set base if using github.io
+input: "./"
+output: ".retype"
+base: "retype"
 ```
 
 If your repository was called `docs`, you would set `"base": "docs"`. If your repository was called `my-website`, you would set `"base": "my-website"`.
@@ -125,20 +123,16 @@ You will then need to [configure the DNS](https://docs.github.com/articles/using
 
 There's one more config we need to add so Retype knows you're using a custom domain or subdomain name. Please set the [`cname`](../configuration/project.md#cname) config within your project's `retype.json` file with the same value.
 
-```json Sample: retype.json if using a custom domain name
-{
-  "input": "./",
-  "output": ".retype",
-  "cname": "example.com"
-}
+```yml Sample: retype.yml if using a custom domain name
+input: "./"
+output: ".retype"
+cname: "example.com"
 ```
 
-```json Sample: retype.json if using a custom subdomain name
-{
-  "input": "./",
-  "output": ".retype",
-  "cname": "docs.example.com"
-}
+```yml Sample: retype.yml if using a custom subdomain name
+input: "./"
+output: ".retype"
+cname: "docs.example.com"
 ```
 
 !!!
