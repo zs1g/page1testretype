@@ -6,19 +6,24 @@ tags: [config]
 ---
 # Project configuration
 
-Retype will read the `retype.json` file for additional instructions on how to configure and build your project.
+Retype will read its configuration file for additional instructions on how to configure and build your project.
 
-The `retype.json` file is typically stored in the root of your project, although can be placed elsewhere. Please ensure the `input` and `output` paths are correct if moved to a different location.
+The file may be written in either JSON or YAML formats, and is typically stored in the root of your project, although can be placed elsewhere. Please ensure the `input` and `output` paths are correct if moved to a different location.
+
+Retype will look for configuration files in the following order:
+- `retype.yml`
+- `retype.yaml`
+- `retype.json`
 
 !!!
-After making a change to the `retype.json`, if you are running `retype watch`, Retype will automatically rebuild the project for you and your web browser will refresh with the changes.
+After making a change to the Retype configuration file, if you are running `retype watch`, Retype will automatically rebuild the project for you and your web browser will refresh with the changes.
 
 If you started the local web server using `retype run`, you'll need to call `retype build` to regenerate a :sparkles: sparkly :sparkles: fresh new build of the project, then manually refresh your web browser to see update.
 !!!
 
 The `retype.json` file is actually optional (not required), but is recommended as you will almost certainly want to customize some options, so adding a `retype.json` is a good first step.
 
-Running the command `retype init` will create a default `retype.json` file. The following sample demonstrates a common set of configuration options and everything can be customized to your requirements.
+Running the command `retype init` will create a default configuration in the `retype.yml` file. The following sample demonstrates a common set of configuration options and everything can be customized to your requirements.
 
 ```json Sample retype.json
 {
@@ -49,7 +54,7 @@ Running the command `retype init` will create a default `retype.json` file. The 
 
 === base : `string`
 
-Base subfolder path appended to all URL's. Default is `null` or empty string.
+Base subfolder path appended to all URLs. Default is `null` or empty string.
 
 If you deploy the build website to a subfolder of another website, use the `base` to ensure the URL's correclty resolve.
 
@@ -288,7 +293,7 @@ The following sample demonstrates a scenario where the content files are located
 === label : `string`
 A custom label for the link. Default is `"Edit this page"`.
 
-```
+```json
 {
   "edit": {
     "repo": "https://github.com/your-organization/your-repo",
@@ -361,7 +366,7 @@ Site-wide copyright statement that will be added to the footer of each page. Sup
 ```json
 {
   "footer": {
-    "copyright": "© Copyright {{ year }}. [Example, Inc.](https://example.come/) All rights reserved.",
+    "copyright": "© Copyright {{ year }}. [Example, Inc.](https://example.come/) All rights reserved."
   }
 }
 ```
