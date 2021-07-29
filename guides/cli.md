@@ -94,7 +94,7 @@ To change the title of the project, revise the `branding.title` config. For inst
 ```json
 {
   "branding": {
-    "title": "Company X",
+    "title": "Company X"
   }
 }
 ```
@@ -138,7 +138,7 @@ If the `.md` documentation files for your project were located not in the root (
 ```json
 {
   "input": "docs",
-  "output": "website",
+  "output": "website"
 }
 ```
 
