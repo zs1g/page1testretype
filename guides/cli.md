@@ -64,7 +64,22 @@ retype init
 
 Calling the `retype init` command will create a simple `retype.json` file with the following default values:
 
-```json Sample retype.json
++++ YAML
+```yml
+input: "."
+output: ".retype"
+branding:
+  title: "Project Name"
+  label: "Docs"
+links:
+  -
+    text: "Getting Started"
+    link: "https://retype.com/getting-started/"
+footer:
+  copyright: "© Copyright {{ year }}. All rights reserved."
+```
++++ Json
+```json
 {
   "input": ".",
   "output": ".retype",
@@ -86,11 +101,18 @@ Calling the `retype init` command will create a simple `retype.json` file with t
   }
 }
 ```
++++
 
 All the configs are optional, but the above sample demonstrates a few of the options you will typically want to start with. See the [project](../configuration/project.md) configuration docs for a full list of all options.
 
 To change the title of the project, revise the `branding.title` config. For instance, let's change to `"Company X"`:
 
++++ YAML
+```yml
+branding:
+  title: "Company X"
+```
++++ Json
 ```json
 {
   "branding": {
@@ -98,6 +120,7 @@ To change the title of the project, revise the `branding.title` config. For inst
   }
 }
 ```
++++
 
 If there is already a `retype.json` file within the project, runnin the `retype init` command will not create a new `retype.json` file.
 
@@ -135,30 +158,51 @@ Within just a few seconds, Retype will create a new website and save to the `out
 
 If the `.md` documentation files for your project were located not in the root (`.`) but within a `docs` subfolder AND you wanted to have Retype send the output to a `website` folder, you would use the following config:
 
++++ YAML
+```yml
+input: "docs"
+output: "website"
+```
++++ Json
 ```json
 {
   "input": "docs",
   "output": "website"
 }
 ```
++++
 
 Let's say you wanted the your new Retype website to run from within a `docs` folder which was then also inside of a root `website` folder, then you would configure:
 
++++ YAML
+```yml
+input: "docs"
+output: "website/docs"
+```
++++ Json
 ```json
 {
   "input": "docs",
   "output": "website/docs"
 }
 ```
++++
 
 If you are hosting your website using [GitHub Pages](https://docs.github.com/en/github/working-with-github-pages/creating-a-github-pages-site) AND you wanted to host your website from the `docs` folder, you could then move your `.md` files into a different subfolder and configure as follows:
 
++++ YAML
+```yml
+input: "src"
+output: "docs"
+```
++++ Json
 ```json
 {
   "input": "src",
   "output": "docs"
 }
 ```
++++
 
 The `input` and `output` configs provide unlimited flexibility to instruct Retype on where to get your project content and configurations files and where to output the generated website.
 

@@ -111,13 +111,22 @@ If a title is added, the title must also be separated from the `#` by one space.
 
 Line numbering can also be configured at the project level using the [`snippets`](../configuration/project.md#snippets) config on your projects `retype.json` file. For instance, instructing Retype to add line numbering to all `js` and `json` code blocks across the website would require the following config:
 
-```json Enable line numbering for js and json code blocks site wide
++++ YAML
+```yml
+snippets:
+  lineNumbers:
+    - "js"
+    - "json"
+```
++++ Json
+```json
 {
   "snippets": {
     "lineNumbers": [ "js", "json" ]
   }
 }
 ```
++++
 
 With the above `snippets` config, then you would not have to add the `#` specifier to each code block. All `js` and `json` code blocks would automatically get line numbers.
 

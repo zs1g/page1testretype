@@ -114,13 +114,21 @@ https://www.mywebsite.com/docs/
 
 Along with that, Retype will require the [`base`](../configuration/project.md#base) config to be added to the `retype.json` file. The following sample demonstrates how the `base` would be configured for this scenario. For your project, replace `"base": "docs"` with `"base": "<directory>"` where `<directory>` is the path to the Retype website within the whole one.
 
-```json Sample: Set base if using github.io
++++ YAML
+```yml
+input: "./"
+output: ".retype"
+base: "docs"
+```
++++ Json
+```json
 {
   "input": "./",
   "output": ".retype",
   "base": "docs"
 }
 ```
++++
 
 See [base](../configuration/project.md#base) documentation.
 
